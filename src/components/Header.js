@@ -36,7 +36,7 @@ function Header() {
                 <span>SERIES</span>
             </a>
         </NavMenu>
-        <UserImg src='images/profile.jpg'/>
+        <UserImg src='images/profile.png'/>
     </Nav>
   )
 }
@@ -49,6 +49,7 @@ const Nav = styled.nav`
     display: flex;
     align-items: center;
     padding: 0 36px;   
+    overflow-x: hidden;
 `
 
 const Logo = styled.img`
