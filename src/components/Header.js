@@ -36,7 +36,7 @@ function Header() {
                 <span>SERIES</span>
             </a>
         </NavMenu>
-        <UserImg src='images/profile.png'/>
+        <UserImg src='images/profile.jpg'/>
     </Nav>
   )
 }
