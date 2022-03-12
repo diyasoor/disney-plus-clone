@@ -30,7 +30,7 @@ function Detail() {
             2018 • 7m • Family, Fantasy, Kids, Animation
         </SubTitle>
         <Description>
-            In  “Bao,” an aging Chinese mom suffering from empty nest syndrome gets another chance at motherhood when one of her dumplings springs to life as a lively, giggly dumpling boy. Mom excitedly welcomes this new bundle of joy into her life, but Dumpling starts growing up fast, and Mom must come to the bittersweet revelation that nothing stays cute and small forever.
+            An aging Chinese mom suffering from empty nest syndrome gets another chance at motherhood when one of her dumplings springs to life as a lively, giggly dumpling boy. Mom excitedly welcomes this new bundle of joy into her life, but Dumpling starts growing up fast, and Mom must come to the bittersweet revelation that nothing stays cute and small forever.
         </Description>
     </Container>
   )
@@ -62,16 +62,16 @@ const Background = styled.div`
 
 const ImageTitle = styled.div`
 
-    height: 30vh;
+    height: 40vh;
     min-height: 170px;
     width: 35vw;
     min-width: 200px;
+    margin-top: 40px;
     margin-left: -80px;
 
     img {
       width: 100%;
       height: 100%;
-      
       object-fit: contain;
     }
 `
@@ -134,7 +134,7 @@ const SubTitle = styled.div`
 `
 const Description = styled.div`
     line-height: 1.4;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 16px;
     color: rgb(249, 249, 249); 
     max-width: 760px;
