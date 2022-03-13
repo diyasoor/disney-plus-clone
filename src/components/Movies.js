@@ -4,40 +4,23 @@ import { selectMovies } from "../features/movie/movieSlice"
 import { useSelector } from "react-redux"
 
 function Movies() {
-const movies = useSelector(selectMovies);
+    const movies = useSelector(selectMovies);
+    console.log(movies);
 
-  console.log("This is movies", movies);
-  return (
-    <Container>
-        <h4>Recommended for You</h4>
-        <Content>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-            <Wrap>
-                <img src='./images/the-simpsons.png' alt='' />
-            </Wrap>
-        </Content>
-    </Container>
-  )
+    return (
+        <Container>
+            <h4>Recommended for You</h4>
+            <Content>
+                { movies &&
+                    movies.map((movie)=>(
+                        <Wrap key={movie.id}>
+                            <img src={movie.cardImg} alt=''/>
+                        </Wrap>
+                    )) 
+                }
+            </Content>
+        </Container>
+    )
 }
 
 export default Movies 
