@@ -1,37 +1,65 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams } from "react-router-dom"
+import db from "../firebase"
 
 function Detail() {
+  const { id } = useParams();
+  // useState is for individual components
+  const [ movie, setMovie ] = useState();
+
+  useEffect(()=>{
+      // Grab the movie info from database
+      db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc)=>{
+          if(doc.exists) {
+              // save the movie data (which will happen inside the state)
+              setMovie(doc.data());
+          } else {
+              // redirect to home page 
+          }
+      })
+  }, [])
+    // Empty bracket means call this functionality whenever you load the component 
+
   return (
     <Container>
-        <Background>
-            <img src="/images/bao.jpg" alt=''/>
-        </Background>
-        <ImageTitle>
-            <img src="/images/baoLogo.png" alt=''/>
-        </ImageTitle>
-        <Controls>
-            <PlayButton>
-                <img src="/images/play-icon-black.png" alt=''/>
-                <span>PLAY</span>
-            </PlayButton>
-            <TrailerButton>
-                <img src="/images/play-icon-white.png" alt=''/>
-                <span>TRAILER</span>
-            </TrailerButton>
-            <AddButton>
-                <span>+</span>
-            </AddButton>
-            <GroupWatchButton>
-                <img src="/images/group-icon.png" alt='' />
-            </GroupWatchButton>
-        </Controls>
-        <SubTitle>
-            2018 • 7m • Family, Fantasy, Kids, Animation
-        </SubTitle>
-        <Description>
-            An aging Chinese mom suffering from empty nest syndrome gets another chance at motherhood when one of her dumplings springs to life as a lively, giggly dumpling boy. Mom excitedly welcomes this new bundle of joy into her life, but Dumpling starts growing up fast, and Mom must come to the bittersweet revelation that nothing stays cute and small forever.
-        </Description>
+        {/* if movie object exists then do this */}
+        {movie && (
+            <>
+                <Background>
+                    <img src={movie.backgroundImg} alt=''/>
+                </Background>
+                <ImageTitle>
+                    <img src={movie.titleImg} alt=''/>
+                </ImageTitle>
+                <Controls>
+                    <PlayButton>
+                        <img src="/images/play-icon-black.png" alt=''/>
+                        <span>PLAY</span>
+                    </PlayButton>
+                    <TrailerButton>
+                        <img src="/images/play-icon-white.png" alt=''/>
+                        <span>TRAILER</span>
+                    </TrailerButton>
+                    <AddButton>
+                        <span>+</span>
+                    </AddButton>
+                    <GroupWatchButton>
+                        <img src="/images/group-icon.png" alt='' />
+                    </GroupWatchButton>
+                </Controls>
+                <SubTitle>
+                    {movie.subTitle}
+                </SubTitle>
+                <Description>
+                    {movie.description}
+                </Description>
+            </>
+        )}
+        
     </Container>
   )
 }
@@ -62,13 +90,13 @@ const Background = styled.div`
 
 const ImageTitle = styled.div`
 
-    height: 40vh;
+    height: 35vh;
     min-height: 170px;
     width: 35vw;
     min-width: 200px;
-    margin-top: 40px;
-    margin-left: -80px;
-
+    margin-top: 35px;
+    margin-bottom: 25px;
+    
     img {
       width: 100%;
       height: 100%;
