@@ -1,44 +1,62 @@
 import React from 'react'
+// import { findRenderedComponentWithType } from 'react-dom/test-utils'
 import styled from 'styled-components'
+import {
+    selectUserName,
+    selectUserPhoto,
+} from "../features/user/userSlice"
+import { useSelector } from "react-redux"
 
 function Header() {
-  return (
-    <Nav>
-        <Logo src="/images/logo.svg" />
-        <NavMenu>
-            <a>
-                <img src='images/home-icon.svg' />
-                <span>HOME</span>
-            </a>
 
-            <a>
-                <img src='images/search-icon.svg' />
-                <span>SEARCH</span>
-            </a>
+    const userName = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
 
-            <a>
-                <img src='images/watchlist-icon.svg' />
-                <span>WATCHLIST</span>
-            </a>
+    return (
+        <Nav>
+            <Logo src="/images/logo.svg" /> {
+                !userName ? (
+                    <LoginContainer>
+                        <Login>Login</Login>
+                    </LoginContainer>) :
 
-            <a>
-                <img src='images/original-icon.svg' />
-                <span>ORIGINALS</span>
-            </a>
+                    <>
+                        <NavMenu>
+                            <a>
+                                <img src='images/home-icon.svg' />
+                                <span>HOME</span>
+                            </a>
 
-            <a>
-                <img src='images/movie-icon.svg' />
-                <span>MOVIES</span>
-            </a>
+                            <a>
+                                <img src='images/search-icon.svg' />
+                                <span>SEARCH</span>
+                            </a>
 
-            <a>
-                <img src='images/series-icon.svg' />
-                <span>SERIES</span>
-            </a>
-        </NavMenu>
-        <UserImg src='images/profile.jpg'/>
-    </Nav>
-  )
+                            <a>
+                                <img src='images/watchlist-icon.svg' />
+                                <span>WATCHLIST</span>
+                            </a>
+
+                            <a>
+                                <img src='images/original-icon.svg' />
+                                <span>ORIGINALS</span>
+                            </a>
+
+                            <a>
+                                <img src='images/movie-icon.svg' />
+                                <span>MOVIES</span>
+                            </a>
+
+                            <a>
+                                <img src='images/series-icon.svg' />
+                                <span>SERIES</span>
+                            </a>
+                        </NavMenu>
+                        <UserImg src='images/profile.jpg'/>
+                    </>
+            }
+        </Nav>
+    )
 }
 
 export default Header
@@ -105,5 +123,28 @@ const UserImg = styled.img`
     width: 48px;
     border-radius: 50%;
     cursor: pointer;
+`
+
+const Login = styled.div`
+    border: 1px solid #f9f9f9;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+
+    &:hover {
+        color: #000;
+        background-color: #f9f9f9;
+        border-color: transparent;
+    }
+`
+
+const LoginContainer = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
 `
 
