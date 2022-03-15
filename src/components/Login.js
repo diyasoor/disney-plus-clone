@@ -44,14 +44,27 @@ const Container = styled.div`
 
 const CTA = styled.div`
     width: 90%;
+    margin-bottom: 2vw;
     padding: 80px 40px;
     max-width: 650px;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: column;
     margin-top: 90px;
     align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    transition-timing-function: ease-out;
+    transition: opacity 0.2s;
 `
-const CTALogoOne = styled.img``
+const CTALogoOne = styled.img`
+    margin-bottom: 12px;
+    max-width: 600px;
+    min-height: 1px;
+    display: block;
+    width: 100%;
+`
 
 const SignUp = styled.a`
     width: 100%;
@@ -59,6 +72,7 @@ const SignUp = styled.a`
     background-color: #0063e5;
     padding: 17px 0;
     color: #f9f9f9;
+    border: 1px solid transparent;
     border-radius: 4px;
     text-align: center;
     font-size: 18px;
@@ -77,7 +91,9 @@ const Description = styled.p`
     font-size: 11px;
     letter-spacing: 1.5px;
     text-align: center;
+    color: hsla(0, 0%, 95.3%, 1);
     line-height: 1.5;
+    margin: 0 0 24px;
 `
 
 const CTALogoTwo = styled.img`
